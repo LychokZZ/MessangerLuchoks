@@ -46,6 +46,35 @@ class authController{
             res.status(400).json({message: "Login error"})
         }
     }
+
+    async getContact(req,res){
+        let contact = []
+        try{
+            const {user} = req.body
+            console.log(req.body)
+            const sender = user
+            const receiver = user
+            const candidat_send = await Message.find({sender})
+            const candidat_res = await Message.find({receiver})
+            for(let i =0; i< candidat_send.length;i++){
+                contact.push(candidat_send[i].receiver)
+            }
+            for(let i =0; i< candidat_res.length;i++){
+                contact.push(candidat_res[i].sender)
+            }
+            const conect = new Set(contact)
+            console.log(contact)
+            let Contacts = []
+            for(const people of conect.keys()){
+                Contacts.push(people)
+            }
+
+            res.json(Contacts) 
+        }catch(e){
+            console.log(e)
+            res.status(400).json({message: "Login error"})
+        }
+    }
     
 
 }
