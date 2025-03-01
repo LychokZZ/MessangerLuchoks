@@ -3,10 +3,12 @@ import './Styles/App.css';
 import Chats from './Component/Chats';
 
 function App() {
+  localStorage.setItem('User', 'Luchik')
   return (
     <div className="App">
       <header className="App-header">
        <Chats/>
+      
       </header>
     </div>
   );
