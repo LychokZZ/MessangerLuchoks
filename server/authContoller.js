@@ -50,8 +50,7 @@ class authController{
     async getContact(req,res){
         let contact = []
         try{
-            const {user} = req.body
-            console.log(req.body)
+            const { user } = req.query;
             const sender = user
             const receiver = user
             const candidat_send = await Message.find({sender})
@@ -63,13 +62,12 @@ class authController{
                 contact.push(candidat_res[i].sender)
             }
             const conect = new Set(contact)
-            console.log(contact)
+            
             let Contacts = []
             for(const people of conect.keys()){
                 Contacts.push(people)
             }
-
-            res.json(Contacts) 
+            return res.json(Contacts) 
         }catch(e){
             console.log(e)
             res.status(400).json({message: "Login error"})

@@ -47,6 +47,7 @@ export default class Store{
     async getContact(user){
         try{
             const response = await serviceAuth.getcontact(user)
+            return response.data
         }catch(e){
             console.log(e)
         }

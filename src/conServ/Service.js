@@ -16,13 +16,6 @@ export default class serviceAuth {
         return $api.post('/sendletter ', {From,To, text}) 
     }
     static async getcontact(User){
-        const body = {
-            user: User,
-        };
-        console.log(body)
-        return $api.get('/getcontact', body )
-    
+        return $api.get('/getcontact', {params : {user:User}});
     }
-
-
 }
