@@ -3,7 +3,7 @@
   background-color: #282c34;
   flex-direction: row;
   align-items: start;
-
+  overflow: hidden;
   color:white;
 }
 .App-header {

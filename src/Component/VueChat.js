@@ -2,10 +2,9 @@ import React,{useContext, useState , useEffect} from 'react';
 import { Context } from "..";
 import "../Styles/Chats.css"
 
-const VueChats = () =>{
+const VueChats = ({ user2 }) =>{
     const {store} = useContext(Context);
-    const user1 = 'Luchik'
-    const user2 = 'Marko'
+    const user1 = JSON.parse(localStorage.getItem('User'));
 
     const [Chat ,setChat] = useState([])
 
@@ -26,9 +25,9 @@ const VueChats = () =>{
        <div>
             <div>
                 {Chat.map((messag, key)=>(
-                    <div>
-                        {messag.user1 && messag.user1.length > 0 ? <div key={key}>{messag.user1}</div> : ""}
-                        {messag.user2 && messag.user2.length > 0 ? <div key={key}>{messag.user2}</div> : ""}
+                    <div key={key}>
+                        {messag.user1 && messag.user1.length > 0 ? <div className='senderUS' key={key}>{user1} : {messag.user1}</div> : ""}
+                        {messag.user2 && messag.user2.length > 0 ? <div className='getterUS' key={key}>{user2} : {messag.user2}</div> : ""}
                     </div>
                 ))}
             </div>

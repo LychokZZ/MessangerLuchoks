@@ -19,7 +19,6 @@ export default class serviceAuth {
         return $api.get('/getcontact', {params : {user:User}});
     }
     static async getChat(user1,user2){
-        console.log(user1,user2)
         return $api.get('/getchat', {params : 
             {
             user1:user1,
