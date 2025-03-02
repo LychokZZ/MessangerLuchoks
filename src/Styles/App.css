@@ -1,3 +1,11 @@
+.App{
+  display: flex;
+  background-color: #282c34;
+  flex-direction: row;
+  align-items: start;
+
+  color:white;
+}
 .App-header {
   margin: 0px;
   background-color: #282c34;

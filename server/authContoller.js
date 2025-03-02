@@ -74,6 +74,36 @@ class authController{
         }
     }
     
+    async getChat(req,res){
+        let messageChat = []
+        try{
+            const { user1, user2 } = req.query;
+            const candidat_use1_send = await Message.find({sender : user1 })
+            const candidat_use2_send = await Message.find({sender : user2 })
+            for(let i=0; i<candidat_use1_send.length; i++){
+                if(candidat_use1_send[i].receiver == user2){
+                    messageChat.push({
+                        user1 : candidat_use1_send[i].text ,
+                        data : candidat_use1_send[i].timestamp
+                    })
+                }
+            }
+            for(let i=0; i<candidat_use2_send.length; i++){
+                if(candidat_use2_send[i].receiver == user1){
+                    messageChat.push({
+                        user2 : candidat_use2_send[i].text ,
+                        data : candidat_use2_send[i].timestamp
+                    })
+                }
+            }
+            messageChat.sort((a, b) => new Date(a.data) - new Date(b.data));
+            
+            return res.json(messageChat) 
+        }catch(e){
+            console.log(e)
+            res.status(400).json({message: "Login error"})
+        }
+    }
 
 }
 

@@ -1,6 +1,8 @@
 import React,{useContext, useState , useEffect} from 'react';
 import { Context } from "..";
 import "../Styles/Chats.css"
+import { HiMagnifyingGlass } from "react-icons/hi2";
+
 const Chats = () =>{
     const [Contacts, setContacts] = useState([])
     const {store} = useContext(Context);
@@ -22,14 +24,18 @@ const Chats = () =>{
             <div className='contacts-conteiner'>
                 <div className='input-block'>
                     <h3>Чати</h3>
-                    <input className='input'></input>
+                    <div className='input'>
+                        <HiMagnifyingGlass />
+                        <input  className='input2' placeholder='Пошук'></input>
+                    </div>
+                    
                 </div>
                 {Contacts.map((contact, index) => (
                     <div>
                         <button className='contacts'>
                             <div key={index}>{contact}</div>
                         </button>
-                        <hr></hr>
+                        <hr className='hr-line'></hr>
                     </div>
                 ))}
             

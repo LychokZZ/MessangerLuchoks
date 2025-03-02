@@ -52,5 +52,16 @@ export default class Store{
             console.log(e)
         }
     }
+
+    async getChat(user1,user2) {
+        try{
+            console.log(user1,user2)
+            const response = await serviceAuth.getChat(user1,user2)
+            console.log(response.data)
+            return response.data
+        }catch(e){
+            console.log(e)
+        }
+    }
  
 }
